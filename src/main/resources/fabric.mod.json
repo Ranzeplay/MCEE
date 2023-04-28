@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "mcee",
+  "version": "${version}",
+  "name": "MCEE",
+  "description": "",
+  "authors": [
+    "Jeb Feng"
+  ],
+  "contact": {
+    "repo": "https://github.com/Ranzeplay/MCEE"
+  },
+  "license": "MIT",
+  "icon": "assets/mcee/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "me.ranzeplay.mcee.client.MCEEClient"
+    ],
+    "main": [
+      "me.ranzeplay.mcee.MCEE"
+    ]
+  },
+  "mixins": [
+    "mcee.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

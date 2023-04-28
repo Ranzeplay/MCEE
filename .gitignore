@@ -1,0 +1,10 @@
+# Gradle cache
+.gradle/
+gradle/
+
+# IDE configuration
+.idea/
+
+# Build cache
+build/
+run/
