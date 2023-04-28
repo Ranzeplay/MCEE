@@ -1,8 +1,10 @@
 package me.ranzeplay.mcee;
 
 import me.ranzeplay.mcee.config.ConfigManager;
+import me.ranzeplay.mcee.events.MessageEventHandler;
 import me.ranzeplay.mcee.events.PlayerJoinEventHandler;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.message.v1.ServerMessageEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,5 +30,6 @@ public class MCEE implements ModInitializer {
         }
 
         ServerPlayConnectionEvents.JOIN.register(PlayerJoinEventHandler::process);
+        ServerMessageEvents.CHAT_MESSAGE.register(MessageEventHandler::processChat);
     }
 }
