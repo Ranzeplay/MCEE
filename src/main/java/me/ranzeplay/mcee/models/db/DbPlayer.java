@@ -1,4 +1,4 @@
-package me.ranzeplay.mcee.models;
+package me.ranzeplay.mcee.models.db;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -6,17 +6,17 @@ import com.j256.ormlite.table.DatabaseTable;
 import java.util.UUID;
 
 @DatabaseTable(tableName = "players")
-public class CachedPlayer {
+public class DbPlayer {
     @DatabaseField(id = true, canBeNull = false)
     UUID uuid;
 
     @DatabaseField(canBeNull = false)
     String name;
 
-    public CachedPlayer() {
+    public DbPlayer() {
     }
 
-    public CachedPlayer(UUID uuid, String name) {
+    public DbPlayer(UUID uuid, String name) {
         this.name = name;
         this.uuid = uuid;
     }

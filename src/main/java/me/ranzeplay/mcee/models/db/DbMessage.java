@@ -1,4 +1,4 @@
-package me.ranzeplay.mcee.models;
+package me.ranzeplay.mcee.models.db;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -6,12 +6,12 @@ import com.j256.ormlite.table.DatabaseTable;
 import java.sql.Timestamp;
 
 @DatabaseTable(tableName = "message")
-public class Message {
+public class DbMessage {
     @DatabaseField(id = true)
     long id;
 
     @DatabaseField(canBeNull = false, foreign = true)
-    CachedPlayer player;
+    DbPlayer player;
 
     @DatabaseField(canBeNull = false)
     String message;
@@ -19,10 +19,10 @@ public class Message {
     @DatabaseField(canBeNull = false)
     Timestamp timestamp;
 
-    public Message() {
+    public DbMessage() {
     }
 
-    public Message(long id, CachedPlayer player, String message, Timestamp timestamp) {
+    public DbMessage(long id, DbPlayer player, String message, Timestamp timestamp) {
         this.id = id;
         this.player = player;
         this.message = message;
@@ -33,7 +33,7 @@ public class Message {
         return id;
     }
 
-    public CachedPlayer getPlayer() {
+    public DbPlayer getPlayer() {
         return player;
     }
 

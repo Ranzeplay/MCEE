@@ -19,6 +19,9 @@
     ],
     "main": [
       "me.ranzeplay.mcee.MCEE"
+    ],
+    "journeymap": [
+      "me.ranzeplay.mcee.client.integration.journeymap.JourneyMapPlugin"
     ]
   },
   "mixins": [

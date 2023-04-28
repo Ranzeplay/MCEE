@@ -1,7 +1,7 @@
 package me.ranzeplay.mcee.events;
 
 import me.ranzeplay.mcee.MCEE;
-import me.ranzeplay.mcee.models.Message;
+import me.ranzeplay.mcee.models.db.DbMessage;
 import net.minecraft.network.message.MessageType;
 import net.minecraft.network.message.SignedMessage;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -16,7 +16,7 @@ public class MessageEventHandler {
             var cachedPlayer = MCEE.configManager.getDbManager().getPlayerDao().queryForId(player.getUuid());
 
             var id = MCEE.configManager.getDbManager().getMessageDao().countOf();
-            var messageToSave = new Message(id, cachedPlayer, message.getContent().getString(), Timestamp.from(Instant.now()));
+            var messageToSave = new DbMessage(id, cachedPlayer, message.getContent().getString(), Timestamp.from(Instant.now()));
             MCEE.configManager.getDbManager().getMessageDao().create(messageToSave);
         } catch (SQLException e) {
             throw new RuntimeException(e);
