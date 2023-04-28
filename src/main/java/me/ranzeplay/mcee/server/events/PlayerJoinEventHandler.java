@@ -1,6 +1,6 @@
-package me.ranzeplay.mcee.events;
+package me.ranzeplay.mcee.server.events;
 
-import me.ranzeplay.mcee.MCEE;
+import me.ranzeplay.mcee.server.MCEEServer;
 import me.ranzeplay.mcee.models.db.DbPlayer;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.minecraft.server.MinecraftServer;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class PlayerJoinEventHandler {
     public static void process(ServerPlayNetworkHandler handler, PacketSender sender, MinecraftServer server) {
-        var playerDao = MCEE.configManager.getDbManager().getPlayerDao();
+        var playerDao = MCEEServer.configManager.getDbManager().getPlayerDao();
 
         var player = handler.getPlayer();
 
@@ -20,7 +20,7 @@ public class PlayerJoinEventHandler {
                 playerDao.create(new DbPlayer(player.getUuid(), player.getName().getString()));
             }
         } catch (SQLException e) {
-            MCEE.LOGGER.error("Error creating player record for " + player.getName().getString());
+            MCEEServer.LOGGER.error("Error creating player record for " + player.getName().getString());
             throw new RuntimeException(e);
         }
     }

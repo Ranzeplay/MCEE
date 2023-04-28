@@ -1,6 +1,6 @@
-package me.ranzeplay.mcee.config;
+package me.ranzeplay.mcee.server.config;
 
-import me.ranzeplay.mcee.db.DatabaseManager;
+import me.ranzeplay.mcee.server.db.DatabaseManager;
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.io.IOException;

@@ -18,7 +18,7 @@
       "me.ranzeplay.mcee.client.MCEEClient"
     ],
     "main": [
-      "me.ranzeplay.mcee.MCEE"
+      "me.ranzeplay.mcee.server.MCEEServer"
     ],
     "journeymap": [
       "me.ranzeplay.mcee.client.integration.journeymap.JourneyMapPlugin"

@@ -1,4 +1,4 @@
-package me.ranzeplay.mcee.db;
+package me.ranzeplay.mcee.server.db;
 
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
