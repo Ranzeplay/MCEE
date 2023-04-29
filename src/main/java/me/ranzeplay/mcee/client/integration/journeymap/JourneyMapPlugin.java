@@ -6,6 +6,7 @@ import journeymap.client.api.event.ClientEvent;
 import journeymap.client.api.event.WaypointEvent;
 import me.ranzeplay.mcee.client.MCEEClient;
 import me.ranzeplay.mcee.client.events.WaypointEventHandler;
+import me.ranzeplay.mcee.client.manager.WaypointManager;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.EnumSet;
@@ -23,6 +24,7 @@ public class JourneyMapPlugin implements IClientPlugin {
     @Override
     public void initialize(final @NotNull IClientAPI jmClientApi) {
         jmAPI = jmClientApi;
+        MCEEClient.waypointManager = new WaypointManager(jmClientApi);
 
         this.jmAPI.subscribe(getModId(), EnumSet.of(WAYPOINT, DEATH_WAYPOINT));
     }
@@ -35,7 +37,11 @@ public class JourneyMapPlugin implements IClientPlugin {
     @Override
     public void onEvent(ClientEvent event) {
         if(event.type == WAYPOINT) {
-            WaypointEventHandler.process((WaypointEvent) event);
+            try {
+                WaypointEventHandler.process((WaypointEvent) event);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }

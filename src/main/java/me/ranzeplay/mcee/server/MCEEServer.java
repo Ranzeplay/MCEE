@@ -9,6 +9,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.message.v1.ServerMessageEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,6 +18,9 @@ import java.sql.SQLException;
 
 public class MCEEServer implements ModInitializer {
     public static final Logger LOGGER = LoggerFactory.getLogger("modid");
+
+    public static final String MODID = "mcee";
+    public static final Identifier SERVER_PUSH_MARKERS = new Identifier(MODID, "server_push_marker");
 
     public static ConfigManager configManager;
 
@@ -37,5 +41,7 @@ public class MCEEServer implements ModInitializer {
 
         ServerPlayNetworking.registerGlobalReceiver(MCEEClient.CLIENT_CREATE_MARKER, (minecraftServer, sender, _serverPlayNetworkHandler, packetByteBuf, packetSender)
                 -> NetworkEventHandler.processMarkerCreation(minecraftServer, sender, packetByteBuf));
+        ServerPlayNetworking.registerGlobalReceiver(MCEEClient.CLIENT_PULL_MARKERS, (minecraftServer, sender, _serverPlayNetworkHandler, packetByteBuf, packetSender)
+                -> NetworkEventHandler.processMarkerSync(minecraftServer, sender, packetByteBuf));
     }
 }

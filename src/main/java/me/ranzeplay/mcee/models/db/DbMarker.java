@@ -29,6 +29,9 @@ public class DbMarker {
     @DatabaseField(canBeNull = false)
     Timestamp timestamp;
 
+    @DatabaseField(canBeNull = false)
+    int color;
+
     public DbMarker() {
     }
 
@@ -39,10 +42,11 @@ public class DbMarker {
         this.timestamp = timestamp;
         this.name = networkingMarker.getName();
 
-        this.x = (int) networkingMarker.getPosition().x;
-        this.y = (int) networkingMarker.getPosition().y;
-        this.z = (int) networkingMarker.getPosition().z;
+        this.x = networkingMarker.getPosition().getX();
+        this.y = networkingMarker.getPosition().getY();
+        this.z = networkingMarker.getPosition().getZ();
         this.dimension = networkingMarker.getDimension();
+        this.color = networkingMarker.getColor();
     }
 
     public long getId() {
@@ -107,5 +111,13 @@ public class DbMarker {
 
     public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
     }
 }
